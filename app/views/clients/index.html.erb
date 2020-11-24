@@ -1,0 +1,17 @@
+<h2>Clients Details</h2>
+<%= link_to "Add Client",new_client_path %>
+<table>
+<tr>
+<th>CLIENT NAME</th>
+<th>SKILL REQUIRED </th>
+<th>CITY</th>
+</tr>
+<% @clients.each do |client| %>
+<tr>
+<td><%= client.Name %></td>
+<td><%= client.Skills %></td>
+<td><%= client.City %></td>
+<td><%= link_to "Find Match",information_index_path %> </td>
+</tr>
+<% end %>
+</table>

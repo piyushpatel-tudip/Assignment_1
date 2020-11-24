@@ -1,0 +1,16 @@
+<h2>Freelancers Details</h2>
+<%= link_to "Add Freelancer",new_freelancer_path %>
+<table>
+<tr>
+<th>Freelancer Name</th>
+<th>Skills </th>
+<th>City Preference</th>
+</tr>
+<% @freelancers.each do |freelancer| %>
+<tr>
+<td><%= freelancer.Name %></td>
+<td><%= freelancer.Skills %></td>
+<td><%= freelancer.City %></td>
+</tr>
+<% end %>
+</table>

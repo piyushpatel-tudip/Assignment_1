@@ -1,0 +1,38 @@
+<h2>Add New Freelancer</h2>
+
+<%= form_for @freelancer do |f| %>
+    <p>
+    <%= f.label :Name %><br>
+    <%= f.text_field :Name %>
+    </p>
+
+    <p>
+    <%= f.label :Skills %><br>
+    <%= f.select(:Skills, [['Ruby','Ruby'], ['Java', 'Java'], ['Python', 'Python'], ['NodeJS', 'NodeJS']]) %>
+    </p>
+    
+    <p>
+    <%= f.label :Experiences_in_Years %><br>
+    <%= f.text_field :Experience%>
+    </p>
+    
+    <p>
+    <%= f.label :Preferred_City %><br>
+    <%= f.select(:City, [['Pune', 'Pune'], ['Mumbai', 'Mumbai'], ['Hydrabad', 'Hydrabad'], ['Chennai', 'Chennai']]) %>
+    </p>
+
+    <p> 
+    Type of Engagement<br>
+    <%= f.radio_button :Engagement, 'Full Time' %> Full Time
+    <%= f.radio_button :Engagement, 'Part Time' %> Part Time<br />
+    </p>
+
+    <p>
+    <%= f.label :Expected_salary_in_INR %><br>
+    <%= f.text_field :Salary %>
+    </p>
+
+    <p>
+    <%= f.submit %>
+    </p>
+<% end %>

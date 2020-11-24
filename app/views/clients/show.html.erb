@@ -1,0 +1,27 @@
+<h2>Added Client</h2>
+
+<p>
+Name: <%= @client.Name %> 
+</p>
+
+<p>
+Skills: <%= @client.Skills %> 
+</p>
+
+<p>
+Experience: <%= @client.Experience %> 
+</p>
+
+<p>
+City: <%= @client.City %> 
+</p>
+
+<p>
+Type of Engagement: <%= @client.Engagement %> 
+</p>
+
+<p>
+Monthly Budget: <%= @client.Budget %> 
+</p>
+<%= link_to "Go Home",clients_path %> |
+<%= link_to "Add Another Patient",new_client_path %>

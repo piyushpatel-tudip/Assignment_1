@@ -1,0 +1,38 @@
+<h2>Add New Client</h2>
+
+<%= form_for @client do |f| %>
+    <p>
+    <%= f.label :Name %><br>
+    <%= f.text_field :Name %>
+    </p>
+
+    <p>
+    <%= f.label :Skills %><br>
+    <%= f.select(:Skills, [['Ruby','Ruby'], ['Java', 'Java'], ['Python', 'Python'], ['NodeJS', 'NodeJS']]) %>
+    </p>
+    
+    <p>
+    <%= f.label :Experiences_in_Years %><br>
+    <%= f.text_field :Experience%>
+    </p>
+    
+    <p>
+    <%= f.label :City %><br>
+    <%= f.select(:City, [['Pune', 'Pune'], ['Mumbai', 'Mumbai'], ['Hydrabad', 'Hydrabad'], ['Chennai', 'Chennai']]) %>
+    </p>
+
+    <p> 
+    Type of Engagement<br>
+    <%= f.radio_button :Engagement, 'Full Time' %> Full Time
+    <%= f.radio_button :Engagement, 'Part Time' %> Part Time<br />
+    </p>
+
+    <p>
+    <%= f.label :Monthly_Budget_in_INR %><br>
+    <%= f.text_field :Budget %>
+    </p>
+
+    <p>
+    <%= f.submit %>
+    </p>
+<% end %>
