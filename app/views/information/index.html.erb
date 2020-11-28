@@ -1,0 +1,76 @@
+<%= link_to "Back",clients_path %>
+<table>
+<tr>
+<th>Employer name</th>
+<th>Matched freelancers</th>
+<th>Percentage Match of Freelancer</th>
+</tr>
+
+<% num1= Array.new(Client.count){Array.new(6)} %>
+<% num2= Array.new(Freelancer.count){Array.new(6)} %>
+<% i=0%>
+<% j=0%>
+<% c1=0%>
+<% f=0%>
+
+<% @clients.each do |client| %>
+    <% num1[c1]= Client.find_by(id: client.id).attributes.slice( 'Skills', 'Experience', 'City', 'Engagement', 'Budget', 'Name').values %>
+    <% num1[0] %>
+    <%c1 +=1 %>
+<% end %>
+<% @clients.each do |client| %>
+    <% @freelancer.each do |freelancer| %>
+        <% num2[f]= Freelancer.find_by(id: freelancer.id).attributes.slice( 'Skills', 'Experience', 'City', 'Engagement', 'Salary', 'Name').values%>    
+        <%f +=1 %>
+    <% end %>
+<% end %>
+    
+    <% while i<Client.count %>
+    <tr>
+        
+        <% j=0 %>
+        <% while j<Freelancer.count %>
+            <% c=0 %>
+            
+            <tr>
+            <td><%= num1[i][5] %></td>
+            <td><%= num2[j][5] %></td>
+            <% if num1[i][0] == num2[j][0] %>
+                    
+            <% c +=1 %>
+            <% end %>
+            <% if num1[i][1] <= num2[j][1] %>
+                
+                <% c +=1 %>
+            <% end %>
+            <% if num1[i][2] == num2[j][2] %>
+                
+                <% c +=1 %>
+            <% end %>
+            <% if num1[i][3].eql?num2[j][3] %>
+                
+                <% c +=1 %>
+            <% end %>
+            <% if num1[i][4] <= num2[j][4] %>
+                
+                <% c +=1 %>
+            <% end %>
+            <% if c==1 %>
+                <td><%= number_to_percentage(20, precision: 0) %></td>
+            <% elsif c==2 %>
+                <td><%= number_to_percentage(40, precision: 0) %></td>
+            <% elsif c==3 %>
+                <td><%= number_to_percentage(60, precision: 0) %></td>
+            <% elsif c==4 %>
+                <td><%= number_to_percentage(80, precision: 0) %></td>
+            <% elsif c==5 %>
+                <td><%= number_to_percentage(100, precision: 0) %></td>
+            <% end %>
+            </tr>
+            <% j +=1 %>
+        <% end %>
+        </tr>
+        <% i +=1 %>
+    <% end %>
+
+</table>

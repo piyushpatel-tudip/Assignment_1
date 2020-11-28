@@ -1,34 +1,34 @@
 <h2>Add New Freelancer</h2>
-
+<%= link_to "Freelancers Details",freelancers_path %> 
 <%= form_for @freelancer do |f| %>
     <p>
-    <%= f.label :Name %><br>
+    <%= f.label :Name_of_freelancer %><br>
     <%= f.text_field :Name %>
     </p>
 
     <p>
-    <%= f.label :Skills %><br>
+    <%= f.label :Choose_the_skill_in_which_you_are_proficient_in %><br>
     <%= f.select(:Skills, [['Ruby','Ruby'], ['Java', 'Java'], ['Python', 'Python'], ['NodeJS', 'NodeJS']]) %>
     </p>
     
     <p>
-    <%= f.label :Experiences_in_Years %><br>
+    <%= f.label :What_is_your_overall_experiences_in_Years %><br>
     <%= f.text_field :Experience%>
     </p>
     
     <p>
-    <%= f.label :Preferred_City %><br>
+    <%= f.label :Choose_your_preferred_City %><br>
     <%= f.select(:City, [['Pune', 'Pune'], ['Mumbai', 'Mumbai'], ['Hydrabad', 'Hydrabad'], ['Chennai', 'Chennai']]) %>
     </p>
 
     <p> 
-    Type of Engagement<br>
+    Choose your preferred type of engagement<br>
     <%= f.radio_button :Engagement, 'Full Time' %> Full Time
     <%= f.radio_button :Engagement, 'Part Time' %> Part Time<br />
     </p>
 
     <p>
-    <%= f.label :Expected_salary_in_INR %><br>
+    <%= f.label :How_much_money_do_you_expect_from_the_client_monthly_in_INR? %><br>
     <%= f.text_field :Salary %>
     </p>
 

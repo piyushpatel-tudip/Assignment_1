@@ -1,0 +1,55 @@
+<p>
+Employer Name: <%= @client.Name %> 
+</p>
+<% f =0 %>
+<% num2= Array.new(Freelancer.count){Array.new(6)} %>
+<% @freelancer.each do |freelancer| %>
+    <% num2[f]= Freelancer.find_by(id: freelancer.id).attributes.slice( 'Skills', 'Experience', 'City', 'Engagement', 'Salary', 'Name').values%>    
+    <%f +=1 %>
+<% end %>
+<table>
+<tr>
+<th>Matched Freelancer</th>
+<th>Matched Percentage </th>
+</tr>
+<% j=0 %>
+<% while j<Freelancer.count %>
+    <% c=0 %>
+    <tr>
+    <td><%= num2[j][5] %></td>
+    <% if  @client.Skills== num2[j][0] %>
+            
+    <% c +=1 %>
+    <% end %>
+    <% if @client.Experience <= num2[j][1] %>
+        
+        <% c +=1 %>
+    <% end %>
+    <% if @client.City == num2[j][2] %>
+        
+        <% c +=1 %>
+    <% end %>
+    <% if @client.Engagement.eql?num2[j][3] %>
+        
+        <% c +=1 %>
+    <% end %>
+    <% if @client.Budget <= num2[j][4] %>
+        
+        <% c +=1 %>
+    <% end %>
+    <% if c==1 %>
+        <td><%= number_to_percentage(20, precision: 0) %></td>
+    <% elsif c==2 %>
+        <td><%= number_to_percentage(40, precision: 0) %></td>
+    <% elsif c==3 %>
+        <td><%= number_to_percentage(60, precision: 0) %></td>
+    <% elsif c==4 %>
+        <td><%= number_to_percentage(80, precision: 0) %></td>
+    <% elsif c==5 %>
+        <td><%= number_to_percentage(100, precision: 0) %></td>
+    <% end %>
+    </tr>
+    <% j +=1 %>
+<% end %>
+</table>
+<%= link_to "Back",clients_path %>

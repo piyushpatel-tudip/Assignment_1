@@ -11,7 +11,7 @@
 <td><%= client.Name %></td>
 <td><%= client.Skills %></td>
 <td><%= client.City %></td>
-<td><%= link_to "Find Match",information_index_path %> </td>
+<td><%= link_to 'Find Match', information_path(client) %> </td>
 </tr>
 <% end %>
 </table>
